@@ -17,9 +17,9 @@ IMAGE_BOOT_FILES = "u-boot-dtb.bin"
 # Mender customizations to support jetson tx2.  This needs to match up with flash_l4t_t186.custom.xml scheme
 # You will need to update these partition values when you update the flash layout.  One way to find the correct number is to
 # boot into an emergency shell and examine the /dev/mmcblk* devices, or use the uboot console to look at mtdparts
-MENDER_DATA_PART = "${MENDER_STORAGE_DEVICE_BASE}31"
-MENDER_ROOTFS_PART_A = "${MENDER_STORAGE_DEVICE_BASE}1"
-MENDER_ROOTFS_PART_B = "${MENDER_STORAGE_DEVICE_BASE}30"
+MENDER_DATA_PART_NUMBER = "31"
+MENDER_ROOTFS_PART_A_NUMBER = "1"
+MENDER_ROOTFS_PART_B_NUMBER = "30"
 
 # Use a 4096 byte alignment for support of tegraflash scheme and default partition locations
 MENDER_PARTITION_ALIGNMENT = "4096"

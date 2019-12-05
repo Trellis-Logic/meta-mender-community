@@ -12,7 +12,7 @@ index 7be05f3..427fb60 100644
 +/* https://github.com/madisongh/meta-tegra/issues/188 */
 +#define CONFIG_SYS_MMC_ENV_DEV		1
 +#define CONFIG_ENV_IS_IN_MMC
-+#define CONFIG_ENV_OFFSET		12897484800
++#define CONFIG_ENV_OFFSET		3911680
  
  /* SPI */
  #define CONFIG_SF_DEFAULT_MODE		SPI_MODE_0

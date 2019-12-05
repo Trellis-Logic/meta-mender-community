@@ -15,5 +15,6 @@ SRC_URI += " file://0003-tegra-Integration-of-Mender-boot-code-into-U-Boot.patch
 SRC_URI_append_mender-uboot = " file://0010-tegra-mender-auto-configured-modified.patch"
 SRC_URI_append_mender-uboot = " file://0011-Jetson-TX2-mender-boot-commands.patch"
 SRC_URI_append_mender-uboot = " file://0012-Update-environment-defaults-for-tegra.patch"
+SRC_URI_append_mender-uboot = " file://0013-Jetson-Nano-mender-environment-in-mmc.patch"
 SRC_URI_remove = " file://0003-Integration-of-Mender-boot-code-into-U-Boot.patch"
 SRC_URI_remove = " file://0006-env-Kconfig-Add-descriptions-so-environment-options-.patch"

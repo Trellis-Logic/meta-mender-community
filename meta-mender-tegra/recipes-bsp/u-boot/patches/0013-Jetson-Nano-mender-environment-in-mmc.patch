@@ -1,0 +1,18 @@
+diff --git a/include/configs/p3450-porg.h b/include/configs/p3450-porg.h
+index 7be05f3..427fb60 100644
+--- a/include/configs/p3450-porg.h
++++ b/include/configs/p3450-porg.h
+@@ -31,8 +31,11 @@
+ #define BOOT_TARGET_DEVICES(func) \
+ 	func(MMC, mmc, 1)
+ 
+-/* Environment s/b at end of SPI, fix it later */
+-#define CONFIG_ENV_IS_NOWHERE
++/* Env is located in it's own partition */
++/* https://github.com/madisongh/meta-tegra/issues/188 */
++#define CONFIG_SYS_MMC_ENV_DEV		1
++#define CONFIG_ENV_IS_IN_MMC
++#define CONFIG_ENV_OFFSET		12897484800
+ 
+ /* SPI */
+ #define CONFIG_SF_DEFAULT_MODE		SPI_MODE_0

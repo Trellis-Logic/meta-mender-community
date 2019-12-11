@@ -1,14 +1,21 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/patches:"
 
 MENDER_UBOOT_AUTO_CONFIGURE = "0"
-# Use the mmcblk0boot1 partition for uboot environment (partition 2 in uboot)
-MENDER_UBOOT_CONFIG_SYS_MMC_ENV_PART = "2"
+# On tegra devices with a real emmc, Use the mmcblk0boot1 partition for uboot environment (partition 2 in uboot)
+MENDER_UBOOT_CONFIG_SYS_MMC_ENV_PART_tegra186 = "2"
+# On jetson-nano without a real emmc and sd-card instead (no emmc boot partition), use the user area for uboot environment
+MENDER_UBOOT_CONFIG_SYS_MMC_ENV_PART_tegra210 = "0"
 
-# Calculate this offset by adding up the offsets of each partition preceeding the uboot_env partition in sdmmc_boot and aligning to the next
+# For devices with real emmc, calculate this offset by adding up the offsets of each partition preceeding the uboot_env partition in sdmmc_boot and aligning to the next
 # 4096 byte boundary, then subtracting 4 MiB (4194304) since the sdmmc_boot represents the combined boot0 and boot1 partitions
 # Please note the suggestions in the nvidia thread at https://devtalk.nvidia.com/default/topic/1063652/jetson-tx2/mmcblk0boot1-usage-at-address-4177408-and-u-boot-parameter-storage-space-availability/
 # regarding suggestions about locating this environment area in mmcblk0boot1 at 0x3BB000 (3911680)
-MENDER_UBOOT_ENV_STORAGE_DEVICE_OFFSET = "${@'12582912' if d.getVar('MACHINE') == 'jetson-nano' else '3911680'}"
+MENDER_UBOOT_ENV_STORAGE_DEVICE_OFFSET_tegra186 = "3911680"
+
+# For devices with sd-card, u-boot env is in the first partition after the system partitions:
+MENDER_UBOOT_ENV_STORAGE_DEVICE_OFFSET_tegra210 = "12582912"
+
+# Use mmc device 1 (from u-boot numbering scheme's point of view) to store u-boot environment
 MENDER_UBOOT_STORAGE_DEVICE_tegra210 = "1"
 
 SRC_URI += " file://0001-env-tool-add-command-line-option-to-input-lockfile-p.patch"

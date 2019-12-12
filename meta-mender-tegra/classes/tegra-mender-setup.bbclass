@@ -49,4 +49,9 @@ MENDER_FEATURES_DISABLE_append = " mender-grub mender-image-uefi"
 
 # Use this variable to adjust your total rootfs size across both images.  Rootfs size will be approximately 1/2 this value (ignoring alignment)
 # The default is enough to build core-image-base
-MENDER_STORAGE_TOTAL_SIZE_MB ??="7000"
+MENDER_STORAGE_TOTAL_SIZE_MB_DEFAULT_tegra186 = "7000"
+
+# For the Jetson Nano, a fixed layout with 16 GB is used. As the data partition is grown anyways, I'm conservatively setting this to 15 GiB.
+MENDER_STORAGE_TOTAL_SIZE_MB_DEFAULT_tegra210 = "15360"
+# ROOTFS size is 4 GiB on the Jetson Nano
+MENDER_IMAGE_ROOTFS_SIZE_DEFAULT_tegra210 = "4194304"

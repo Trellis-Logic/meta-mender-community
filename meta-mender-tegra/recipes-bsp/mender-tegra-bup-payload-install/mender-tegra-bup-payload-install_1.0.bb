@@ -6,14 +6,14 @@ UBOOT_IMAGE ?= "u-boot-${MACHINE}.${UBOOT_SUFFIX}"
 
 COMPATIBLE_MACHINE = "(tegra186|tegra194)"
 
-BUPFILE = "${@'${INITRD_IMAGE}-${MACHINE}.bup-payload' if d.getVar('PREFERRED_PROVIDER_virtual/bootloader').startswith('cboot') else '${UBOOT_IMAGE}.bup-payload'}"
+BUPFILE = "${@'tegra-minimal-initramfs-${MACHINE}.bup-payload'}"
 
 do_install() {
     install -d ${D}/opt/ota_package/
     install -m 0644 ${DEPLOY_DIR_IMAGE}/${BUPFILE} ${D}/opt/ota_package/bl_update_payload
 }
 
-do_install[depends] += "${@'${INITRD_IMAGE}:do_image_complete' if d.getVar('PREFERRED_PROVIDER_virtual/bootloader').startswith('cboot') else 'u-boot-bup-payload:do_deploy'}"
+do_install[depends] += "${@'tegra-minimal-initramfs:do_image_complete'}"
 FILES_${PN} = "/opt/ota_package"
 RDEPENDS_${PN} += "tegra-redundant-boot"
 PACKAGE_ARCH = "${MACHINE_ARCH}"

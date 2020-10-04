@@ -1,3 +1,6 @@
+Keeping this repository for legacy history, new tegra development PRs should target and fork
+from https://github.com/OE4T/meta-mender-community
+
 # Yocto community integration layers for Mender
 
 Mender is an open source over-the-air (OTA) software updater for embedded Linux

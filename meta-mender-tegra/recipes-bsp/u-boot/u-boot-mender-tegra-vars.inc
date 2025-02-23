@@ -4,6 +4,7 @@ MENDER_UBOOT_CONFIG_SYS_MMC_ENV_PART = "2"
 TEGRA_MENDER_BOOTENV_SIZE_DEFAULT = "0x20000"
 TEGRA_MENDER_BOOTENV_SIZE_DEFAULT_tegra210 = "${@'0x10000' if (d.getVar('TEGRA_SPIFLASH_BOOT') or '') == '1' else '0x20000'}"
 BOOTENV_SIZE ?= "${TEGRA_MENDER_BOOTENV_SIZE_DEFAULT}"
+TEGRA_MENDER_BOOTENV_SIZE_DEFAULT_tegra186 = "${@'0x1c000' if bb.utils.to_boolean(d.getVar('TEGRA_MENDER_UBOOT_T186_CONFIG_ENV_SIZE_REDUCE')) else '0x20000'}"
 
 # Calculate this offset by adding up the offsets of each partition preceeding the uboot_env partition in sdmmc_boot and aligning to the next
 # 4096 byte boundary, then subtracting 4 MiB (4194304) since the sdmmc_boot represents the combined boot0 and boot1 partitions

@@ -29,6 +29,7 @@ ADDITIONAL_PATCHES_l4t-mender-32-5-2-and-later = "\
     file://0012-p3541-0000_defconfig-Mender-patch.patch \
     file://0015-Update-TX1-nano-emmc-defconfigs-for-new-UBENV-locati.patch \
     file://0017-Jetson-Xavier-NX-TX2-NX-mender.patch \
+    ${@'file://0018-configs-reduce-CONFIG_ENV_SIZE-on-t186.patch' if bb.utils.to_boolean(d.getVar('TEGRA_MENDER_UBOOT_T186_CONFIG_ENV_SIZE_REDUCE')) else ''} \
 "
 SRC_URI_append_mender-uboot = "${ADDITIONAL_PATCHES}"
 

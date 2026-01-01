@@ -9,6 +9,7 @@ machine: p3768-0000-p3767-0000
 local_conf_header:
   AB-upgrades: |
     USE_REDUNDANT_FLASH_LAYOUT_DEFAULT = "1"
+    OVERRIDES:append = ":flash-l4t-234-nvme-rootfs-ab-mender-customizations"
   eMMC: |
     # equivalent: EMMC_SIZE = "32 * 1024 * 1024 * 1024"
     EMMC_SIZE = "34359738368"

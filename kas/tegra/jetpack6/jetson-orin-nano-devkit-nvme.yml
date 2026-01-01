@@ -1,0 +1,20 @@
+header:
+  version: 14
+  includes:
+    - kas/include/mender-full.yml
+    - kas/include/tegra-jetpack6.yml
+
+machine: jetson-orin-nano-devkit-nvme
+
+local_conf_header:
+  AB-upgrades: |
+    USE_REDUNDANT_FLASH_LAYOUT_DEFAULT = "1"
+    OVERRIDES:append = ":flash-l4t-234-nvme-rootfs-ab-mender-customizations"
+  storage: |
+    # No EMMC on Orin Nano
+    EMMC_SIZE = "0"
+    # Based on the order of the flash_l4t_t324_nvme_rootfs_ab.xml file defined in meta-mender-tegra-common and UDA sector definition
+    MENDER_DATA_PART_NUMBER = "17"
+    # Match boot device used on nvme based machines
+    MENDER_STORAGE_DEVICE = "/dev/${TNSPEC_BOOTDEV}"
+    MENDER_STORAGE_TOTAL_SIZE_MB = "63000"

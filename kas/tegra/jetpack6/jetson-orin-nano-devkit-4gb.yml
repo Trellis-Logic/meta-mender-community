@@ -16,5 +16,5 @@ local_conf_header:
     # Based on the order of the flash_l4t_t324_nvme_rootfs_ab.xml file defined in meta-mender-tegra-common and UDA sector definition
     MENDER_DATA_PART_NUMBER = "17"
     # Match boot device used on nvme based machines
-    MENDER_STORAGE_DEVICE = "/dev/${TNSPEC_BOOTDEV}"
+    MENDER_STORAGE_DEVICE = "/dev/nvme0n1"
     MENDER_STORAGE_TOTAL_SIZE_MB = "63000"
